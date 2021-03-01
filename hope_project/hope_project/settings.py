@@ -26,7 +26,7 @@ SECRET_KEY = 'pyxr^)-a5(8nprpe=zrd@h0ir21!wuz1^nes+$q2rsp_)chobu'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['47.254.250.77', 'localhost', '8000']
 
 
 # Application definition
@@ -52,11 +52,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'hope_project.urls'
 
-TEMPLATES_DIRS = os.path.join(BASE_DIR,'templates')
+TEMPLATES_DIRS = os.path.join(BASE_DIR, 'templates')
 
 TEMPLATES = [
     {
@@ -80,10 +81,21 @@ WSGI_APPLICATION = 'hope_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ['DATABASE_NAME'],
+        'USER': os.environ['DATABASE_USER'],
+        'PASSWORD': os.environ['DATABASE_PASSWORD'],
+        'HOST': os.environ['DATABASE_HOST'],
+        'PORT': int(os.environ['DATABASE_PORT']),
     }
 }
 
@@ -127,5 +139,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 #Location of static files
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

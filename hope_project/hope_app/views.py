@@ -6,7 +6,7 @@ from .forms import PostCommentForm
 
 class PostList(generic.ListView):
     queryset = Post.objects.filter(status=1).order_by('-created_on')
-    template_name = 'index.html'
+    template_name = 'post_list.html'
 
 
 def post_detail(request, slug):
