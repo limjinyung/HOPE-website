@@ -133,6 +133,23 @@ USE_L10N = True
 USE_TZ = True
 
 
+# ACCESS_KEY_ID = "LTAI4GEnxj4xDGQ9jLhThusm"
+# ACCESS_KEY_SECRET = "G4XjISRjfdJc2ploJJJQCZXCTxmjKm"
+#
+# # The URL of AliCloud OSS endpoint
+# # Refer https://www.alibabacloud.com/help/zh/doc-detail/31837.htm for OSS Region & Endpoint
+# END_POINT = "oss-ap-southeast-3.aliyuncs.com"
+# BUCKET_NAME = "hope-web-bucket"  # if not exist in aliyun oss platform, it will created automatically
+# ALIYUN_OSS_CNAME = ""  # custom domain. optional
+# BUCKET_ACL_TYPE = "private"  # bucket access type. available value: private, public-read, public-read-write
+# ALIYUN_OSS_HTTPS = False  # optional config. determine use https or not. if not declare, this value will be False by default.
+#
+# # storage media file
+# DEFAULT_FILE_STORAGE = 'django_aliyun_oss2.backends.AliyunMediaStorage'
+# # storage static file
+# STATICFILES_STORAGE = 'django_aliyun_oss2.backends.AliyunStaticStorage'
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
