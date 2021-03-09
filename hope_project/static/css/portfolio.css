@@ -1,0 +1,52 @@
+.portfolio-section{
+    margin-top:6vh;
+    // background-color: #F7F5EF;
+}
+.portfolio-section .list-group-item{
+    border: 3px solid;
+    border-color: rgba(129, 184, 185, 0.5);
+}
+.portfolio-section .list-group .active{
+    color: #FFF;
+    background-color: #81B8B9;
+    border-color: none;
+
+}
+.list-group{
+    height: 90vh;
+    margin-bottom:5vh;
+    overflow:scroll;
+    -webkit-overflow-scrolling: touch;
+}
+.portfolio-details .jumbotron{
+    height: 90vh;
+    margin-bottom: 5vh;
+    background-color: #F7F5EF;
+    overflow:auto;
+}
+.portfolio-section h5{
+    font-family: 'Crimson Pro', serif;
+    font-weight:500;
+    font-size: 24px;
+}
+.portfolio-name, .portfolio-title, .portfolio-biography, .portfolio-contact, .portfolio-volunteer{
+    text-align:left;
+    font-family: 'Crimson Pro', serif;
+    padding-top: .5rem;
+}
+.portfolio-name h4{
+    font-size: 27px;
+    font-weight:500;
+}
+.portfolio-title p{
+    font-size: 18px;
+    font-weight:400;
+}
+.portfolio-biography p{
+    font-size: 18px;
+    font-weight:400;
+}
+.portfolio-volunteer h5{
+    font-size:21px;
+}
+

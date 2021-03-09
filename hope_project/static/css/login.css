@@ -1,0 +1,28 @@
+.login-form{
+    margin: 0;
+    top:50%;
+    left:50%;
+    position: absolute;
+    transform: translate(-50% , -50%);
+    width:30%;
+}
+.login-form-title{
+    font-family: 'Barlow', sans-serif;
+    margin-bottom: 30px;
+}
+.login-form-input{
+    font-family: 'Poppins', sans-serif;
+    height: 10vh;
+}
+.login-form button{
+    font-family: 'Poppins', sans-serif;
+    width:100%;
+}
+.login-form-submit button{
+    font-size: 16px;
+    padding-top:15px;
+    padding-bottom:15px;
+}
+::placeholder {
+    font-family: 'Barlow', sans-serif;
+}

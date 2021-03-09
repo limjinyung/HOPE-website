@@ -1,22 +1,59 @@
 from django.db import models
 from django.db import models
-# from django.contrib.auth.models import User
+from django.contrib.auth.models import User
 
 # Create your models here.
-
-
-class User(models.Model):
-    username = models.CharField(max_length=80)
-    email = models.EmailField()
-
-    def __str__(self):
-        return self.username
 
 
 STATUS = (
     (0, "Draft"),
     (1, "Publish")
 )
+
+
+class Quote(models.Model):
+    quote_id = models.AutoField(primary_key=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.CharField(max_length=80)
+
+    def __str__(self):
+        return self.quote_id
+
+
+class VolunteerExperience(models.Model):
+    # portfolio = models.ForeignKey('Portfolio', on_delete=models.CASCADE, null=True)
+    volunteer_experience_id = models.AutoField(primary_key=True)
+    description = models.TextField()
+    start_date = models.DateTimeField()
+    end_date = models.DateTimeField()
+
+    def __str__(self):
+        return self.volunteer_experience_id
+
+
+class WorkExperience(models.Model):
+    # portfolio = models.ForeignKey('Portfolio', on_delete=models.CASCADE, null=True)
+    work_experience_id = models.AutoField(primary_key=True)
+    description = models.TextField()
+    start_date = models.DateTimeField()
+    end_date = models.DateTimeField()
+
+    def __str__(self):
+        return self.work_experience_id
+
+
+class Portfolio(models.Model):
+    portfolio_id = models.AutoField(primary_key=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(null=True, blank=True, max_length=100)
+    biography = models.CharField(max_length=500)
+    work_experience = models.ForeignKey('WorkExperience', null=True, blank=True, on_delete=models.CASCADE)
+    volunteer_experience = models.ForeignKey('VolunteerExperience', null=True, blank=True, on_delete=models.CASCADE)
+    phone_number = models.CharField(max_length=80)
+    address = models.CharField(max_length=80)
+
+    def __str__(self):
+        return str(self.portfolio_id)
 
 
 class Post(models.Model):
@@ -29,12 +66,15 @@ class Post(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=0)
+    # post_image = models.ImageField(upload_to='posts')
 
     class Meta:
         ordering = ['-created_on']
 
     def __str__(self):
-        return self.title
+        return self.title + ", " + self.content + ", " + self.slug + ", " + \
+               self.created_on.strftime("%m/%d/%Y, %H:%M:%S") + ", " + \
+               self.updated_on.strftime("%m/%d/%Y, %H:%M:%S") + ", " + str(self.status)
 
 
 class PostComment(models.Model):

@@ -1,0 +1,32 @@
+/* Intro header in every sub page */
+.intro{
+    margin-top:6vh;
+    margin-bottom:6vh;
+}
+.intro h2{
+    font-family: 'Spectral', serif;
+    padding: 5px 0px 5px 0px;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    font-size: 30px;
+}
+.intro p{
+    font-family: 'Crimson Pro', serif;
+    font-size: 20px;
+}
+.divider{
+    height: 2px;
+    border: none;
+    background-color: #eaeaea;
+    margin: 0 auto;
+    margin-top:3vh;
+    max-width: 356.66667px!important;
+}
+.post-category{
+    margin-top:3vh;
+    margin-bottom:6vh;
+    font-size:24px;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+}
