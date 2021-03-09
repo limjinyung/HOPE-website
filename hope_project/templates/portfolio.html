@@ -1,0 +1,197 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="index container" style="margin-top: 20px;">
+
+        <!--  Header  -->
+
+        <div class="row align-items-center default-button">
+            <div class="col search-icon">
+              <a data-bs-toggle="collapse" href="#search_collapse" role="button" aria-expanded="false">
+                <i class="fas fa-search"></i>
+              </a>
+            </div>
+            <div class="col text-center">
+              <h1 class="text-center">hope</h1>
+            </div>
+            <div class="col">
+              {% if anonymous_user %}
+              <a href="/login"><button>LOGIN</button></a>
+              {% else %}
+              <a href="/logout"><button>LOGOUT</button></a>
+              {% endif %}
+            </div>
+        </div>
+
+        <!--  Search Bar  -->
+
+        <div class="collapse fulltext-search-input" id="search_collapse">
+          <div class="card card-body">
+            <form action="{% url 'search_results' %}" method="get">
+              <input name="search_hope" type="text" placeholder="Search...">
+            </form>
+          </div>
+        </div>
+
+        <!--  Navigation Bar  -->
+
+        <ul class="nav justify-content-center">
+          <li class="nav-item">
+            <a class="nav-link text-uppercase" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase" aria-current="page" href="/postlist">Confession</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase" href="#">Quote</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase active" href="/portfolio">Portfolio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase" href="/about_us">About Us</a>
+          </li>
+        </ul>
+
+        <!--  Intro  -->
+
+        <div class="container intro">
+            <h2 class="text-center">Portfolio</h2>
+            <p class="text-center">Browse our extensive yoga sequence library and find a home practice that fits into your schedule. We break up our yoga sequences into levels of difficulty so you’re keeping your body safe in every pose. Or search through our list of yoga sequences by anatomy to target different aspects of the body. We also break down our sequences into different types, in case you’re looking for the perfect Kundalini or Ashtanga sequence. In a hurry? Search our yoga sequences by length, so you can fit in your workout during any time crunch.</p>
+        </div>
+
+        <hr class="divider">
+
+        <!--    Portfolio    -->
+
+        <div class="portfolio-section row">
+          <!--   col-4     -->
+          <div class="col-4">
+              <div class="list-group">
+              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">Lim Jin Yung</h5>
+<!--                  <small>3 days ago</small>-->
+                </div>
+                <p class="mb-1">Passionate student with programming, web development and data structure skills ...</p>
+                <small>Software Developer</small>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">List group item heading</h5>
+<!--                  <small class="text-muted">3 days ago</small>-->
+                </div>
+                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                <small class="text-muted">Donec id elit non mi porta.</small>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">List group item heading</h5>
+<!--                  <small class="text-muted">3 days ago</small>-->
+                </div>
+                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                <small class="text-muted">Donec id elit non mi porta.</small>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">List group item heading</h5>
+<!--                  <small class="text-muted">3 days ago</small>-->
+                </div>
+                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                <small class="text-muted">Donec id elit non mi porta.</small>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">List group item heading</h5>
+<!--                  <small class="text-muted">3 days ago</small>-->
+                </div>
+                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                <small class="text-muted">Donec id elit non mi porta.</small>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">List group item heading</h5>
+<!--                  <small class="text-muted">3 days ago</small>-->
+                </div>
+                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                <small class="text-muted">Donec id elit non mi porta.</small>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">List group item heading</h5>
+<!--                  <small class="text-muted">3 days ago</small>-->
+                </div>
+                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                <small class="text-muted">Donec id elit non mi porta.</small>
+              </a>
+            </div>
+          </div>
+
+          <!--   col-8   -->
+          <div class="col-8 portfolio-details">
+            <div class="jumbotron jumbotron-fluid">
+              <div class="container text-center">
+                <!--   Portfolio Image   -->
+                <div class="portfolio-image">
+                  <img src="https://images.unsplash.com/photo-1529421308418-eab98863cee4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1955&q=80" class="card-img-top" alt="...">
+                </div>
+                <!--   Portfolio Name and title   -->
+                <div class="row">
+                    <div class="portfolio-name col">
+                        <h4>David Mike</h4>
+                    </div>
+                    <div class="portfolio-title col">
+                        <p>Software Developer</p>
+                    </div>
+                </div>
+                <!--   Portfolio phone and email   -->
+                <div class="portfolio-contact">
+                    <div class="portfolio-phone">
+                        <p><i class="fas fa-phone-alt"></i> &nbsp; 0123358596 </p>
+                    </div>
+                    <div class="portfolio-email">
+                        <p><i class="far fa-envelope"></i> &nbsp; jinyung0069@gmail.com </p>
+                    </div>
+                </div>
+                <!--   Portfolio biography   -->
+                <div class="portfolio-biography">
+                    <p>Passionate student with programming, web development and data structure skills, seeking for an internship/part- time opportunity to enhance personal skills and working experience in IT field. Let's start scrolling and learn more about me.</p>
+                </div>
+                <!--   Portfolio volunteer   -->
+                <div class="portfolio-volunteer">
+                    <h5><i class="fas fa-hands-helping"></i> &nbsp; Volunteer Experience</h5>
+                    <ul>
+                        <li>
+                            Church volunteer. Led team of 25 community fundraisers that raised $5,300 for charity. (2020/01/09-2021/07/08)
+                        </li>
+                        <li>
+                            Animal shelter volunteer. Collaborated with 18 out-of-state rescues to save the lives of 4,800+ dogs and cats. (2020/07/23-2020/09/04)
+                        </li>
+                        <li>
+                            Nursing home volunteer. Kept records on 153 patients for 2 years with 100% HIPAA compliance. (2020/02/13-2020/06/24)
+                        </li>
+                    </ul>
+                </div>
+                <!--   Portfolio working experience   -->
+                <div class="portfolio-volunteer">
+                    <h5><i class="fas fa-briefcase"></i> &nbsp; Working Experience</h5>
+                    <ul>
+                        <li>
+                            Software Developer. Full stack developer to build responsive SPA website and deploy to cloud platform
+                        </li>
+                        <li>
+                            Animal shelter volunteer. Collaborated with 18 out-of-state rescues to save the lives of 4,800+ dogs and cats.
+                        </li>
+                        <li>
+                            Nursing home volunteer. Kept records on 153 patients for 2 years with 100% HIPAA compliance.
+                        </li>
+                    </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+    </div>
+
+
+{% endblock %}

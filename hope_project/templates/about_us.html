@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block content %}
+<!--{% load static %}-->
+<!--<link rel="stylesheet" href="{% static 'css/post-list.css' %}">-->
+<!--<link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">-->
+<!--<script data-search-pseudo-elements defer src="https://use.fontawesome.com/releases/latest/js/all.js" integrity="sha384-L469/ELG4Bg9sDQbl0hvjMq8pOcqFgkSpwhwnslzvVVGpDjYJ6wJJyYjvG3u8XW7" crossorigin="anonymous"></script>-->
+
+<div class="index container" style="margin-top: 20px;">
+
+    <!--  Header  -->
+
+    <div class="row align-items-center default-button">
+        <div class="col search-icon">
+          <a data-bs-toggle="collapse" href="#search_collapse" role="button" aria-expanded="false">
+            <i class="fas fa-search"></i>
+          </a>
+        </div>
+        <div class="col text-center">
+          <h1 class="text-center">hope</h1>
+        </div>
+        <div class="col">
+          {% if anonymous_user %}
+          <a href="/login"><button>LOGIN</button></a>
+          {% else %}
+          <a href="/logout"><button>LOGOUT</button></a>
+          {% endif %}
+        </div>
+    </div>
+
+    <!--  Search Bar  -->
+
+    <div class="collapse fulltext-search-input" id="search_collapse">
+      <div class="card card-body">
+        <form action="{% url 'search_results' %}" method="get">
+          <input name="search_hope" type="text" placeholder="Search...">
+        </form>
+      </div>
+    </div>
+
+    <!--  Navigation Bar  -->
+
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link text-uppercase" aria-current="page" href="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-uppercase" aria-current="page" href="/postlist">Confession</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-uppercase" href="#">Quote</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-uppercase" href="/portfolio">Portfolio</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-uppercase active" href="/about_us">About Us</a>
+      </li>
+    </ul>
+    <!--  Intro  -->
+
+    <div class="container intro">
+        <h2 class="text-center">About Us</h2>
+        <p class="text-center">We are a team of university students came from different fields gather together hoping to contribute something to the world. Our aim is to spread positivity by building a platform to allow people to share their story to encourage others that may also facing the same issues or challenges. </p>
+    </div>
+
+    <!--  About us Image  -->
+    <div class="about-us-img text-center">
+        <img src="../static/images/about-us-img.png">
+    </div>
+
+</div>
+
+
+<section class="footer">
+  <div class="container">
+    <div class="footer__content">
+      <div class="footer__heading">
+        <h2>hope</h2>
+      </div>
+      <p class="mb-0">Content & Graphics © 2020 bhairab.iitd@gmail.com LLC</p>
+
+      <br/>
+      <ul class="social__media">
+        <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+        <li><a href="#"><i class="fab fa-facebook-messenger" aria-hidden="true"></i></a></li>
+        <li><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+{%endblock%}

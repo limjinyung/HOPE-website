@@ -1,4 +1,4 @@
-from .models import PostComment, User
+from .models import Post, PostComment, User
 from django import forms
 
 
@@ -19,3 +19,9 @@ class PostCommentForm(forms.ModelForm):
     class Meta:
         model = PostComment
         fields = ('name', 'email', 'body')
+
+
+class ConfessionForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ('title', 'content')

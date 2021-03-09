@@ -26,7 +26,7 @@ SECRET_KEY = 'pyxr^)-a5(8nprpe=zrd@h0ir21!wuz1^nes+$q2rsp_)chobu'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['47.254.250.77', 'www.hop3.cyou','localhost', '8000']
+ALLOWED_HOSTS = ['47.254.250.77', 'www.hop3.cyou', 'http://hope-web-bucket.oss-ap-southeast-3.aliyuncs.com', 'localhost', '8000']
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'crispy_forms',
     'hope_app',
 ]
@@ -53,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'hope_project.urls'
@@ -77,6 +79,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'hope_project.wsgi.application'
 
+CORS_ALLOWED_ORIGINS = [
+     'http://hope-web-bucket.oss-ap-southeast-3.aliyuncs.com',
+]
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases

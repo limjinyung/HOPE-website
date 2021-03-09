@@ -9,6 +9,7 @@ urlpatterns = [
     path('search/', views.SearchResultsView.as_view(), name='search_results'),
     path('postlist/', views.post_list, name='postlist'),
     path("portfolio/", views.portfolio, name='portfolio'),
+    path('create_confession', views.create_confession, name="confession"),
     path("about_us/", views.about_us, name='about_us'),
     path("login/", views.sign_in, name='login'),
     path("logout/", views.log_out, name='logout'),

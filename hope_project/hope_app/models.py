@@ -51,6 +51,7 @@ class Portfolio(models.Model):
     volunteer_experience = models.ForeignKey('VolunteerExperience', null=True, blank=True, on_delete=models.CASCADE)
     phone_number = models.CharField(max_length=80)
     address = models.CharField(max_length=80)
+    portfolio_image = models.ImageField(null=True, blank=True, upload_to='portfolios')
 
     def __str__(self):
         return str(self.portfolio_id)
@@ -66,7 +67,7 @@ class Post(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=0)
-    # post_image = models.ImageField(upload_to='posts')
+    post_image = models.ImageField(null=True, blank=True, upload_to='posts')
 
     class Meta:
         ordering = ['-created_on']

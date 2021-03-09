@@ -5,3 +5,4 @@ psycopg2-binary
 Pillow
 whitenoise
 django-aliyun-oss2
+django-cors-headers

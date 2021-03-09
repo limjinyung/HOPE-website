@@ -81,6 +81,38 @@ def post_detail(request, slug):
                                            'comment_form': comment_form})
 
 
+def create_confession(request):
+    template_name = 'confession.html'
+
+    if not request.user.is_authenticated:
+        raise PermissionDenied
+
+    if request.method == "POST":
+        confession_form = ConfessionForm(data=request.POST)
+
+        if confession_form.is_valid():
+            payload = confession_form.cleaned_data
+
+            author = request.user
+            title = payload.get('title')
+            content = payload.get('content')
+            slug = title.replace(' ', '-')
+            status = 1
+
+            post = Post.objects.create(author=author, title=title, content=content, slug=slug, status=status)
+            try:
+                post.save()
+            except Exception as e:
+                print(e)
+
+            return redirect("/")
+
+    confession_form = ConfessionForm()
+
+    return render(request, template_name, {'form': confession_form})
+
+
+
 class SearchResultsView(ListView):
     template_name = 'search_result.html'
 
