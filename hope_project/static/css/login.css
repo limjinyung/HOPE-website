@@ -23,6 +23,16 @@
     padding-top:15px;
     padding-bottom:15px;
 }
+
+.signup-link a{
+    text-decoration: none;
+    padding: 0.6rem 0rem;
+    color: #6d6d6d;
+}
+.signup-link a:hover{
+    color: #999284;
+}
+
 ::placeholder {
     font-family: 'Barlow', sans-serif;
 }

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'widget_tweaks',
     'corsheaders',
     'crispy_forms',
     'hope_app',
@@ -93,14 +94,25 @@ CORS_ALLOWED_ORIGINS = [
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': os.environ['DATABASE_NAME'],
+#         'USER': os.environ['DATABASE_USER'],
+#         'PASSWORD': os.environ['DATABASE_PASSWORD'],
+#         'HOST': os.environ['DATABASE_HOST'],
+#         'PORT': int(os.environ['DATABASE_PORT']),
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ['DATABASE_NAME'],
-        'USER': os.environ['DATABASE_USER'],
-        'PASSWORD': os.environ['DATABASE_PASSWORD'],
-        'HOST': os.environ['DATABASE_HOST'],
-        'PORT': int(os.environ['DATABASE_PORT']),
+        'NAME': os.environ['DATABASE_NAME1'],
+        'USER': os.environ['DATABASE_USER1'],
+        'PASSWORD': os.environ['DATABASE_PASSWORD1'],
+        'HOST': os.environ['DATABASE_HOST1'],
+        'PORT': int(os.environ['DATABASE_PORT1']),
     }
 }
 
@@ -136,6 +148,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
 
 ACCESS_KEY_ID = "LTAI4GEnxj4xDGQ9jLhThusm"

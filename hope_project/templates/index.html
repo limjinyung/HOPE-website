@@ -7,9 +7,9 @@
 
     <div class="row align-items-center default-button">
         <div class="col search-icon">
-          <a data-bs-toggle="collapse" href="#search_collapse" role="button" aria-expanded="false">
-            <i class="fas fa-search"></i>
-          </a>
+<!--          <a data-bs-toggle="collapse" href="#search_collapse" role="button" aria-expanded="false">-->
+<!--            <i class="fas fa-search"></i>-->
+<!--          </a>-->
         </div>
         <div class="col text-center">
           <h1 class="text-center">hope</h1>
@@ -25,21 +25,13 @@
 
     <!--  Search Bar  -->
 
-    <div class="collapse fulltext-search-input" id="search_collapse">
-      <div class="card card-body">
-        <form action="{% url 'search_results' %}" method="get">
-          <input name="search_hope" type="text" placeholder="Search...">
-        </form>
-      </div>
-    </div>
-
-    <!--  Search Bar  -->
-
-    <div class="search-input collapse" id="collapseExample">
-      <div class="card card-body">
-        Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
-      </div>
-    </div>
+<!--    <div class="collapse fulltext-search-input" id="search_collapse">-->
+<!--      <div class="card card-body">-->
+<!--        <form action="{% url 'search_results' %}" method="get">-->
+<!--          <input name="search_hope" type="text" placeholder="Search...">-->
+<!--        </form>-->
+<!--      </div>-->
+<!--    </div>-->
 
     <!--  Navigation Bar  -->
 
@@ -48,10 +40,7 @@
         <a class="nav-link text-uppercase active" aria-current="page" href="/">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-uppercase" aria-current="page" href="/postlist">Confession</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-uppercase" href="#">Quote</a>
+        <a class="nav-link text-uppercase" aria-current="page" href="/confession">Confession</a>
       </li>
       <li class="nav-item">
         <a class="nav-link text-uppercase" href="/portfolio">Portfolio</a>
@@ -60,6 +49,19 @@
         <a class="nav-link text-uppercase" href="/about_us">About Us</a>
       </li>
     </ul>
+
+    <!--  Alert  -->
+
+    {% if messages %}
+        {% for message in messages %}
+        <div {% if message.tags %} class="alert alert-{{ message.tags }} alert-dismissible fade show"{% endif %} role="alert">
+          {{message}}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        {% endfor %}
+    {% endif %}
 
     <!--  Quotes  -->
 
@@ -156,114 +158,89 @@
 
     <div class="index-title">
         <h4>CONFESSION PAGE</h4>
-        <a href="#">READ MORE <i class="fas fa-arrow-circle-right"></i></a>
+        <a href="/confession">READ MORE <i class="fas fa-arrow-circle-right"></i></a>
     </div>
 
     <div class="row confession-page">
+      {% for single_index_post in index_post %}
       <div class="col-sm-4">
-        <a href="#">
+        <a href="/confession/{{ single_index_post.slug }}">
         <div class="card h-100">
-          <img src="https://images.unsplash.com/photo-1614648692330-eb129aeb6880?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=975&q=80" class="card-img-top" alt="...">
+          <img src="https://hope-web-bucket.oss-ap-southeast-3.aliyuncs.com/{{single_index_post.post_image}}" class="card-img-top" alt="...">
           <div class="card-body">
-            <h4 class="card-title">FDA Gives Emergency Authorization for Johnson & Johnson's COVID-19 Vaccine</h4>
-            <p class="card-subtitle">COVID-19</p>
+            <h4 class="card-title">{{ single_index_post.title }}</h4>
+            <p class="card-subtitle">{{ single_index_post.tag }}</p>
 <!--            <a href="#" class="btn btn-primary">READ MORE</a>-->
           </div>
         </div>
         </a>
       </div>
-      <div class="col-sm-4">
-        <a href="#">
-        <div class="card h-100">
-          <img src="https://images.unsplash.com/photo-1611095966422-50a79dd5313b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1951&q=80" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h4 class="card-title">You Can Still Spread, Develop COVID-19 After Getting a Vaccine: What to Know</h4>
-            <p class="card-subtitle">COVID-19</p>
-<!--            <a href="#" class="btn btn-primary">READ MORE</a>-->
-          </div>
-        </div>
-        </a>
-      </div>
-      <div class="col-sm-4">
-        <a href="#">
-        <div class="card h-100">
-          <img src="https://images.unsplash.com/photo-1586790167861-6e87cdff91b9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h4 class="card-title">How Alcohol May Affect Your Response to the COVID-19 Vaccine</h4>
-            <p class="card-subtitle">Vaccine</p>
-<!--            <a href="#" class="btn btn-primary">READ MORE</a>-->
-          </div>
-        </div>
-        </a>
-      </div>
-      <div class="col-sm-4">
-        <a href="#">
-        <div class="card h-100">
-          <img src="https://images.unsplash.com/photo-1607877342024-27a1ee8b68d4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h4 class="card-title">HIV Recovery Stories: Getting to Undetectable</h4>
-            <p class="card-subtitle">HIV</p>
-<!--            <a href="#" class="btn btn-primary">READ MORE</a>-->
-          </div>
-        </div>
-        </a>
-      </div>
-      <div class="col-sm-4">
-        <div class="card h-100">
-          <img src="https://images.unsplash.com/photo-1610401163029-227ab25995ea?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h4 class="card-title">Here’s Exactly Where We Are with Vaccines and Treatments for COVID-19</h4>
-            <p class="card-subtitle">Vaccine</p>
-<!--            <a href="#" class="btn btn-primary">READ MORE</a>-->
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <a href="#">
-        <div class="card h-100">
-          <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h4 class="card-title">FDA Says Not to Use This Antiparasitic Medication to Treat COVID-19</h4>
-            <p class="card-subtitle">Vaccine</p>
-<!--            <a href="#" class="btn btn-primary">READ MORE</a>-->
-          </div>
-        </div>
-        </a>
-      </div>
+      {% endfor %}
     </div>
 
     <!--  Portfolio  -->
 
     <div class="index-title flipping-card-title">
         <h4>PORTFOLIO</h4>
-        <a href="#">FIND MORE <i class="fas fa-arrow-circle-right"></i></a>
+        <a href="/portfolio">FIND MORE <i class="fas fa-arrow-circle-right"></i></a>
     </div>
+
+<!--    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">-->
+<!--      <div class="carousel-inner">-->
+<!--        <div class="carousel-item active">-->
+<!--          <a href="#">-->
+<!--            <img src="https://images.unsplash.com/photo-1549417603-7e1d286eae43?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80" class="d-block w-100" alt="...">-->
+<!--          </a>-->
+<!--          <div class="carousel-caption d-none d-md-block">-->
+<!--            <h5>First slide label</h5>-->
+<!--            <p>Some representative placeholder content for the first slide.</p>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="carousel-item">-->
+<!--          <img src="https://images.unsplash.com/photo-1614676367564-32341390913f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80" class="d-block w-100" alt="...">-->
+<!--          <div class="carousel-caption d-none d-md-block">-->
+<!--            <h5>Second slide label</h5>-->
+<!--            <p>Some representative placeholder content for the second slide.</p>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="carousel-item">-->
+<!--          <img src="https://images.unsplash.com/photo-1475823678248-624fc6f85785?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80" class="d-block w-100" alt="...">-->
+<!--          <div class="carousel-caption d-none d-md-block">-->
+<!--            <h5>Third slide label</h5>-->
+<!--            <p>Some representative placeholder content for the third slide.</p>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <button class="carousel-control-button carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"  data-bs-slide="prev">-->
+<!--        <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+<!--        <span class="visually-hidden">Previous</span>-->
+<!--      </button>-->
+<!--      <button class="carousel-control-button carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"  data-bs-slide="next">-->
+<!--        <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
+<!--        <span class="visually-hidden">Next</span>-->
+<!--      </button>-->
+<!--    </div>-->
+
+  {{index_post.portfolio_image}}
+
 
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
+        {% for single_index_portfolio in index_portfolio %}
+        {% if forloop.counter == 1 %}
         <div class="carousel-item active">
-          <a href="#">
-            <img src="https://images.unsplash.com/photo-1549417603-7e1d286eae43?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80" class="d-block w-100" alt="...">
+        {% else %}
+        <div class="carousel-item">
+        {% endif %}
+          <a href="/portfolio">
+            <img src="https://hope-web-bucket.oss-ap-southeast-3.aliyuncs.com/{{single_index_portfolio.portfolio_image}}" class="card-img-top" alt="...">
           </a>
           <div class="carousel-caption d-none d-md-block">
-            <h5>First slide label</h5>
-            <p>Some representative placeholder content for the first slide.</p>
+            <h5>{{single_index_portfolio.author.last_name}} {{single_index_portfolio.author.first_name}}</h5>
+            <p>{{single_index_portfolio.title}}</p>
           </div>
         </div>
-        <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1614676367564-32341390913f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80" class="d-block w-100" alt="...">
-          <div class="carousel-caption d-none d-md-block">
-            <h5>Second slide label</h5>
-            <p>Some representative placeholder content for the second slide.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1475823678248-624fc6f85785?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80" class="d-block w-100" alt="...">
-          <div class="carousel-caption d-none d-md-block">
-            <h5>Third slide label</h5>
-            <p>Some representative placeholder content for the third slide.</p>
-          </div>
-        </div>
+        {% endfor %}
       </div>
       <button class="carousel-control-button carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"  data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -274,6 +251,7 @@
         <span class="visually-hidden">Next</span>
       </button>
     </div>
+
 </div>
 
 <section class="footer">
@@ -282,7 +260,7 @@
       <div class="footer__heading">
         <h2>hope</h2>
       </div>
-      <p class="mb-0">Content & Graphics © 2020 bhairab.iitd@gmail.com LLC</p>
+      <p class="mb-0">hope website © 2021</p>
 
       <br/>
       <ul class="social__media">
@@ -312,6 +290,7 @@
     $(document).ready(function(){
       $(".owl-carousel").owlCarousel();
     });
+
 </script>
 
 {%endblock%}

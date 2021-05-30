@@ -1,0 +1,10 @@
+:root{
+    --font-size-xs: 14px;
+    --font-size-s: 18px;
+    --font-size-m: 22px;
+    --font-size-l: 24px;
+    --font-size-xl: 30px;
+    --font-size-xxl: 40px;
+    --font-size-2xxl: 50px;
+    --header-height: 85px;
+}

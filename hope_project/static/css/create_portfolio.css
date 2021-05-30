@@ -1,0 +1,66 @@
+.create-portfolio-upload-image label{
+    font-family: 'Quicksand', sans-serif;
+    color: white;
+    background-color: #81B8B9;
+    padding: .5rem 1rem;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 10px;
+    font-weight: 700;
+    border: 1px solid #81b9b9;
+    cursor: pointer;
+}
+#file-chosen{
+  margin-left: 0.3rem;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.portfolio-accordion{
+    margin-bottom: 2rem;
+}
+.portfolio-accordion .card{
+    background-color:white;
+}
+.portfolio-accordion .card-header{
+    background-color:#989285;
+}
+.portfolio-accordion .card-header button{
+    font-family: "Spectral", sans-serif;
+    font-weight: 600;
+    background-color:#989285;
+    color:white;
+}
+.accordian-date-picker{
+    font-family: 'Quicksand', sans-serif;
+    padding: .3rem
+}
+.portfolio-accordion label{
+    font-family: 'Quicksand', sans-serif;
+}
+.small-portfolio-form-button button {
+    font-family: 'Quicksand', sans-serif;
+    float: right;
+    color: white;
+    background-color: #81B8B9;
+    padding: 3px 15px 3px 15px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    border-radius: 10px;
+    font-weight: 700;
+    border: 1px solid #81b9b9;
+}
+.default-button button:hover{
+    background-color: #356792;
+}
+
+.single-portfolio-details .jumbotron{
+    margin-top: .9rem;
+    background-color: #F7F5EF;
+}
+.single-portfolio-details .show-portfolio-img{
+    width: 100%;
+    height: 51vw;
+    object-fit: cover;
+}

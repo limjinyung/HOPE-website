@@ -7,9 +7,9 @@
 
         <div class="row align-items-center default-button">
             <div class="col search-icon">
-              <a data-bs-toggle="collapse" href="#search_collapse" role="button" aria-expanded="false">
-                <i class="fas fa-search"></i>
-              </a>
+<!--              <a data-bs-toggle="collapse" href="#search_collapse" role="button" aria-expanded="false">-->
+<!--                <i class="fas fa-search"></i>-->
+<!--              </a>-->
             </div>
             <div class="col text-center">
               <h1 class="text-center">hope</h1>
@@ -25,13 +25,13 @@
 
         <!--  Search Bar  -->
 
-        <div class="collapse fulltext-search-input" id="search_collapse">
-          <div class="card card-body">
-            <form action="{% url 'search_results' %}" method="get">
-              <input name="search_hope" type="text" placeholder="Search...">
-            </form>
-          </div>
-        </div>
+<!--        <div class="collapse fulltext-search-input" id="search_collapse">-->
+<!--          <div class="card card-body">-->
+<!--            <form action="{% url 'search_results' %}" method="get">-->
+<!--              <input name="search_hope" type="text" placeholder="Search...">-->
+<!--            </form>-->
+<!--          </div>-->
+<!--        </div>-->
 
         <!--  Navigation Bar  -->
 
@@ -40,10 +40,7 @@
             <a class="nav-link text-uppercase" aria-current="page" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-uppercase" aria-current="page" href="/postlist">Confession</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-uppercase" href="#">Quote</a>
+            <a class="nav-link text-uppercase" aria-current="page" href="/confession">Confession</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-uppercase active" href="/portfolio">Portfolio</a>
@@ -53,145 +50,310 @@
           </li>
         </ul>
 
+        <!--  Alert  -->
+
+        {% if messages %}
+            {% for message in messages %}
+            <div {% if message.tags %} class="alert alert-{{ message.tags }} alert-dismissible fade show"{% endif %} role="alert">
+              {{message}}
+            </div>
+            {% endfor %}
+        {% endif %}
+
         <!--  Intro  -->
 
         <div class="container intro">
             <h2 class="text-center">Portfolio</h2>
-            <p class="text-center">Browse our extensive yoga sequence library and find a home practice that fits into your schedule. We break up our yoga sequences into levels of difficulty so you’re keeping your body safe in every pose. Or search through our list of yoga sequences by anatomy to target different aspects of the body. We also break down our sequences into different types, in case you’re looking for the perfect Kundalini or Ashtanga sequence. In a hurry? Search our yoga sequences by length, so you can fit in your workout during any time crunch.</p>
+            <p class="text-center">Providing an user-friendly, casual and interactive platform for individuals who are seeking for job opportunities and employers who are scouting for potential employees during this period of time. Job seekers may upload their details on this page and everyone is able to view. It also helps the community to get to know each other as well as reassurance that we are not alone during this pandemic.</p>
+            <div class="create-link-button text-center">
+                <a href="/create_portfolio"><button style="float:center;">Create Your Own Portfolio</button></a>
+            </div>
         </div>
 
         <hr class="divider">
 
         <!--    Portfolio    -->
 
-        <div class="portfolio-section row">
+<!--        <div class="portfolio-section row">-->
+<!--          &lt;!&ndash;   col-4     &ndash;&gt;-->
+<!--          <div class="col-4">-->
+<!--              <div class="list-group">-->
+<!--              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">-->
+<!--                <div class="d-flex w-100 justify-content-between">-->
+<!--                  <h5 class="mb-1">Lim Jin Yung</h5>-->
+<!--&lt;!&ndash;                  <small>3 days ago</small>&ndash;&gt;-->
+<!--                </div>-->
+<!--                <p class="mb-1">Passionate student with programming, web development and data structure skills ...</p>-->
+<!--                <small>Software Developer</small>-->
+<!--              </a>-->
+<!--              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">-->
+<!--                <div class="d-flex w-100 justify-content-between">-->
+<!--                  <h5 class="mb-1">List group item heading</h5>-->
+<!--&lt;!&ndash;                  <small class="text-muted">3 days ago</small>&ndash;&gt;-->
+<!--                </div>-->
+<!--                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>-->
+<!--                <small class="text-muted">Donec id elit non mi porta.</small>-->
+<!--              </a>-->
+<!--              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">-->
+<!--                <div class="d-flex w-100 justify-content-between">-->
+<!--                  <h5 class="mb-1">List group item heading</h5>-->
+<!--&lt;!&ndash;                  <small class="text-muted">3 days ago</small>&ndash;&gt;-->
+<!--                </div>-->
+<!--                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>-->
+<!--                <small class="text-muted">Donec id elit non mi porta.</small>-->
+<!--              </a>-->
+<!--              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">-->
+<!--                <div class="d-flex w-100 justify-content-between">-->
+<!--                  <h5 class="mb-1">List group item heading</h5>-->
+<!--&lt;!&ndash;                  <small class="text-muted">3 days ago</small>&ndash;&gt;-->
+<!--                </div>-->
+<!--                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>-->
+<!--                <small class="text-muted">Donec id elit non mi porta.</small>-->
+<!--              </a>-->
+<!--              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">-->
+<!--                <div class="d-flex w-100 justify-content-between">-->
+<!--                  <h5 class="mb-1">List group item heading</h5>-->
+<!--&lt;!&ndash;                  <small class="text-muted">3 days ago</small>&ndash;&gt;-->
+<!--                </div>-->
+<!--                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>-->
+<!--                <small class="text-muted">Donec id elit non mi porta.</small>-->
+<!--              </a>-->
+<!--              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">-->
+<!--                <div class="d-flex w-100 justify-content-between">-->
+<!--                  <h5 class="mb-1">List group item heading</h5>-->
+<!--&lt;!&ndash;                  <small class="text-muted">3 days ago</small>&ndash;&gt;-->
+<!--                </div>-->
+<!--                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>-->
+<!--                <small class="text-muted">Donec id elit non mi porta.</small>-->
+<!--              </a>-->
+<!--              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">-->
+<!--                <div class="d-flex w-100 justify-content-between">-->
+<!--                  <h5 class="mb-1">List group item heading</h5>-->
+<!--&lt;!&ndash;                  <small class="text-muted">3 days ago</small>&ndash;&gt;-->
+<!--                </div>-->
+<!--                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>-->
+<!--                <small class="text-muted">Donec id elit non mi porta.</small>-->
+<!--              </a>-->
+<!--            </div>-->
+<!--          </div>-->
+
+          <div class="portfolio-section row">
           <!--   col-4     -->
           <div class="col-4">
               <div class="list-group">
-              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">Lim Jin Yung</h5>
-<!--                  <small>3 days ago</small>-->
-                </div>
-                <p class="mb-1">Passionate student with programming, web development and data structure skills ...</p>
-                <small>Software Developer</small>
-              </a>
-              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">List group item heading</h5>
-<!--                  <small class="text-muted">3 days ago</small>-->
-                </div>
-                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                <small class="text-muted">Donec id elit non mi porta.</small>
-              </a>
-              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">List group item heading</h5>
-<!--                  <small class="text-muted">3 days ago</small>-->
-                </div>
-                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                <small class="text-muted">Donec id elit non mi porta.</small>
-              </a>
-              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">List group item heading</h5>
-<!--                  <small class="text-muted">3 days ago</small>-->
-                </div>
-                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                <small class="text-muted">Donec id elit non mi porta.</small>
-              </a>
-              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">List group item heading</h5>
-<!--                  <small class="text-muted">3 days ago</small>-->
-                </div>
-                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                <small class="text-muted">Donec id elit non mi porta.</small>
-              </a>
-              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">List group item heading</h5>
-<!--                  <small class="text-muted">3 days ago</small>-->
-                </div>
-                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                <small class="text-muted">Donec id elit non mi porta.</small>
-              </a>
-              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">List group item heading</h5>
-<!--                  <small class="text-muted">3 days ago</small>-->
-                </div>
-                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                <small class="text-muted">Donec id elit non mi porta.</small>
-              </a>
+                  {% for portfolio in portfolio_list %}
+                  <a href="#" data-alias="{{portfolio.portfolio_id}}" class="list-group-item list-group-item-action flex-column align-items-start portfolio-selection">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">{{ portfolio.author.last_name }} {{ portfolio.author.first_name }}</h5>
+    <!--                  <small>3 days ago</small>-->
+                    </div>
+                    {% if portfolio.biography|length > 150 %}
+                    <p class="mb-1">{{ portfolio.biography|slice:":150" }}...</p>
+                    {% else %}
+                    <p class="mb-1">{{ portfolio.biography }} </p>
+                    {% endif %}
+                    <small>{{ portfolio.title }}</small>
+                  </a>
+                  {% endfor %}
             </div>
           </div>
 
+<!--          &lt;!&ndash;   col-8   &ndash;&gt;-->
+<!--          <div class="col-8 portfolio-details">-->
+<!--            <div class="jumbotron jumbotron-fluid">-->
+<!--              <div class="container text-center">-->
+<!--                &lt;!&ndash;   Portfolio Image   &ndash;&gt;-->
+<!--                <div class="portfolio-image">-->
+<!--                  <img src="https://images.unsplash.com/photo-1529421308418-eab98863cee4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1955&q=80" class="card-img-top" alt="...">-->
+<!--                </div>-->
+<!--                &lt;!&ndash;   Portfolio Name and title   &ndash;&gt;-->
+<!--                <div class="row">-->
+<!--                    <div class="portfolio-name col">-->
+<!--                        <h4>David Mike</h4>-->
+<!--                    </div>-->
+<!--                    <div class="portfolio-title col">-->
+<!--                        <p>Software Developer</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                &lt;!&ndash;   Portfolio phone and email   &ndash;&gt;-->
+<!--                <div class="portfolio-contact">-->
+<!--                    <div class="portfolio-phone">-->
+<!--                        <p><i class="fas fa-phone-alt"></i> &nbsp; 0123358596 </p>-->
+<!--                    </div>-->
+<!--                    <div class="portfolio-email">-->
+<!--                        <p><i class="far fa-envelope"></i> &nbsp; jinyung0069@gmail.com </p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                &lt;!&ndash;   Portfolio biography   &ndash;&gt;-->
+<!--                <div class="portfolio-biography">-->
+<!--                    <p>Passionate student with programming, web development and data structure skills, seeking for an internship/part- time opportunity to enhance personal skills and working experience in IT field. Let's start scrolling and learn more about me.</p>-->
+<!--                </div>-->
+<!--                &lt;!&ndash;   Portfolio volunteer   &ndash;&gt;-->
+<!--                <div class="portfolio-volunteer">-->
+<!--                    <h5><i class="fas fa-hands-helping"></i> &nbsp; Volunteer Experience</h5>-->
+<!--                    <ul>-->
+<!--                        <li>-->
+<!--                            Church volunteer. Led team of 25 community fundraisers that raised $5,300 for charity. (2020/01/09-2021/07/08)-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            Animal shelter volunteer. Collaborated with 18 out-of-state rescues to save the lives of 4,800+ dogs and cats. (2020/07/23-2020/09/04)-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            Nursing home volunteer. Kept records on 153 patients for 2 years with 100% HIPAA compliance. (2020/02/13-2020/06/24)-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--                &lt;!&ndash;   Portfolio working experience   &ndash;&gt;-->
+<!--                <div class="portfolio-volunteer">-->
+<!--                    <h5><i class="fas fa-briefcase"></i> &nbsp; Working Experience</h5>-->
+<!--                    <ul>-->
+<!--                        <li>-->
+<!--                            Software Developer. Full stack developer to build responsive SPA website and deploy to cloud platform-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            Animal shelter volunteer. Collaborated with 18 out-of-state rescues to save the lives of 4,800+ dogs and cats.-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            Nursing home volunteer. Kept records on 153 patients for 2 years with 100% HIPAA compliance.-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+
           <!--   col-8   -->
-          <div class="col-8 portfolio-details">
+          <div class="col-8 portfolio-details-before">
+            <div class="jumbotron jumbotron-fluid">
+              <div class="container text-center">
+                <p><i class="far fa-address-card"></i></p>
+                <p>Survey some talents now!</p>
+              </div>
+            </div>
+          </div>
+
+          <!--   col-8 after  -->
+          <div class="col-8 portfolio-details d-none">
             <div class="jumbotron jumbotron-fluid">
               <div class="container text-center">
                 <!--   Portfolio Image   -->
-                <div class="portfolio-image">
-                  <img src="https://images.unsplash.com/photo-1529421308418-eab98863cee4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1955&q=80" class="card-img-top" alt="...">
+                <div id="portfolio-image-id" class="portfolio-image">
+<!--                  <img src="https://images.unsplash.com/photo-1529421308418-eab98863cee4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1955&q=80" class="card-img-top" alt="...">-->
                 </div>
                 <!--   Portfolio Name and title   -->
                 <div class="row">
-                    <div class="portfolio-name col">
-                        <h4>David Mike</h4>
+                    <div id="portfolio-name-id" class="col portfolio-name">
+<!--                        <h4>David Mike</h4>-->
                     </div>
-                    <div class="portfolio-title col">
-                        <p>Software Developer</p>
+                    <div id="portfolio-title-id" class="portfolio-title col">
+<!--                        <p>Software Developer</p>-->
                     </div>
                 </div>
                 <!--   Portfolio phone and email   -->
                 <div class="portfolio-contact">
-                    <div class="portfolio-phone">
-                        <p><i class="fas fa-phone-alt"></i> &nbsp; 0123358596 </p>
+                    <div id="portfolio-phone">
+<!--                        <p id="portfolio-phone-p"><i class="fas fa-phone-alt"></i> &nbsp; 0123358596 </p>-->
                     </div>
-                    <div class="portfolio-email">
-                        <p><i class="far fa-envelope"></i> &nbsp; jinyung0069@gmail.com </p>
+                    <div id="portfolio-email">
+<!--                        <p id="portfolio-email-p"><i class="far fa-envelope"></i> &nbsp; jinyung0069@gmail.com </p>-->
                     </div>
                 </div>
                 <!--   Portfolio biography   -->
-                <div class="portfolio-biography">
-                    <p>Passionate student with programming, web development and data structure skills, seeking for an internship/part- time opportunity to enhance personal skills and working experience in IT field. Let's start scrolling and learn more about me.</p>
+                <div id="portfolio-biography-id" class="portfolio-biography">
+<!--                    <p>Passionate student with programming, web development and data structure skills, seeking for an internship/part- time opportunity to enhance personal skills and working experience in IT field. Let's start scrolling and learn more about me.</p>-->
                 </div>
                 <!--   Portfolio volunteer   -->
                 <div class="portfolio-volunteer">
                     <h5><i class="fas fa-hands-helping"></i> &nbsp; Volunteer Experience</h5>
-                    <ul>
-                        <li>
-                            Church volunteer. Led team of 25 community fundraisers that raised $5,300 for charity. (2020/01/09-2021/07/08)
-                        </li>
-                        <li>
-                            Animal shelter volunteer. Collaborated with 18 out-of-state rescues to save the lives of 4,800+ dogs and cats. (2020/07/23-2020/09/04)
-                        </li>
-                        <li>
-                            Nursing home volunteer. Kept records on 153 patients for 2 years with 100% HIPAA compliance. (2020/02/13-2020/06/24)
-                        </li>
+                    <ul id="portfolio-volunteer-id">
+<!--                        <li>-->
+<!--                            Church volunteer. Led team of 25 community fundraisers that raised $5,300 for charity. (2020/01/09-2021/07/08)-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            Animal shelter volunteer. Collaborated with 18 out-of-state rescues to save the lives of 4,800+ dogs and cats. (2020/07/23-2020/09/04)-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            Nursing home volunteer. Kept records on 153 patients for 2 years with 100% HIPAA compliance. (2020/02/13-2020/06/24)-->
+<!--                        </li>-->
                     </ul>
                 </div>
                 <!--   Portfolio working experience   -->
                 <div class="portfolio-volunteer">
                     <h5><i class="fas fa-briefcase"></i> &nbsp; Working Experience</h5>
-                    <ul>
-                        <li>
-                            Software Developer. Full stack developer to build responsive SPA website and deploy to cloud platform
-                        </li>
-                        <li>
-                            Animal shelter volunteer. Collaborated with 18 out-of-state rescues to save the lives of 4,800+ dogs and cats.
-                        </li>
-                        <li>
-                            Nursing home volunteer. Kept records on 153 patients for 2 years with 100% HIPAA compliance.
-                        </li>
+                    <ul id="portfolio-work-id">
+<!--                        <li>-->
+<!--                            Software Developer. Full stack developer to build responsive SPA website and deploy to cloud platform-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            Animal shelter volunteer. Collaborated with 18 out-of-state rescues to save the lives of 4,800+ dogs and cats.-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            Nursing home volunteer. Kept records on 153 patients for 2 years with 100% HIPAA compliance.-->
+<!--                        </li>-->
                     </ul>
                 </div>
               </div>
             </div>
           </div>
 
+        </div>
     </div>
 
+    <script>
+
+        var portfolio_json = {{portfolio_json|safe}};
+        var work_experience_json = {{work_experience_json|safe}};
+        var volunteer_experience_json = {{volunteer_experience_json|safe}};
+        var user_json = {{user_json|safe}};
+        var clicked = false;
+
+
+        $('.list-group-item').on('click', function(e) {
+            e.preventDefault()
+            var $this = $(this);
+            var $alias = $this.data('alias');
+            clicked = true;
+
+            $('.active').removeClass('active');
+            $this.toggleClass('active')
+
+            $('.portfolio-details-before').addClass('d-none');
+            $('.portfolio-details').removeClass('d-none');
+
+            showPortfolio($alias)
+        })
+
+        function showPortfolio($alias) {
+
+            show_portfolio = portfolio_json.filter(portfolio => portfolio.pk == $alias );
+            show_work = work_experience_json.filter(work => work.fields.portfolio == $alias );
+            show_volunteer = volunteer_experience_json.filter(vol => vol.fields.portfolio == $alias );
+            user_id = show_portfolio[0].fields.author;
+            show_user = user_json.filter(user => user.pk == user_id);
+
+            var work_experience_html = '';
+            var volunteer_experience_html = '';
+
+            document.getElementById("portfolio-image-id").innerHTML = '<img src="https://hope-web-bucket.oss-ap-southeast-3.aliyuncs.com/' + show_portfolio[0].fields.portfolio_image + '" class="card-img-top" alt="...">'
+            document.getElementById("portfolio-name-id").innerHTML = '<h4>' + show_user[0].fields.last_name + '&nbsp;' + show_user[0].fields.first_name + ' </h4>'
+            document.getElementById("portfolio-title-id").innerHTML = '<p>' + show_portfolio[0].fields.title + ' </p>'
+            document.getElementById("portfolio-phone").innerHTML = '<p><i class="fas fa-phone-alt"></i> &nbsp;' +  show_portfolio[0].fields.phone_number + ' </p>'
+            document.getElementById("portfolio-email").innerHTML = '<p><i class="far fa-envelope"></i> &nbsp;' +  show_user[0].fields.email + ' </p>'
+            document.getElementById("portfolio-biography-id").innerHTML = '<p>' +  show_portfolio[0].fields.biography + '</p>'
+
+            for (var i=0; i<show_work.length; i++){
+                  work_experience_html += '<li>' + show_work[i].fields.description + '&nbsp; (' + show_work[i].fields.start_date + ' - ' + show_work[i].fields.end_date + ') </li>\n'
+                }
+            document.getElementById("portfolio-work-id").innerHTML = work_experience_html
+
+            for (var i=0; i<show_volunteer.length; i++){
+               volunteer_experience_html += '<li>' + show_volunteer[i].fields.description + '&nbsp; (' + show_volunteer[i].fields.start_date + ' - ' + show_volunteer[i].fields.end_date + ') </li>\n'
+            }
+            document.getElementById("portfolio-volunteer-id").innerHTML = volunteer_experience_html
+
+        }
+
+
+    </script>
 
 {% endblock %}

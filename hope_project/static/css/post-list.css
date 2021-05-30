@@ -10,6 +10,13 @@
     letter-spacing: 1.3px;
     font-size: 30px;
 }
+.intro h4{
+    font-family: 'Spectral', serif;
+    padding: 5px 0px 5px 0px;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    font-size: 21px;
+}
 .intro p{
     font-family: 'Crimson Pro', serif;
     font-size: 20px;
@@ -29,4 +36,21 @@
     font-family: 'Barlow', sans-serif;
     font-weight: 700;
     letter-spacing: 0.25em;
+}
+
+.create-link-button button{
+    font-family: 'Quicksand', sans-serif;
+    color: white;
+    background-color: #81B8B9;
+    padding: 6px 18px 6px 18px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 10px;
+    font-weight: 700;
+    border: 1px solid #81b9b9;
+}
+.create-link-button button:hover{
+    background-color: #356792;
+    cursor:pointer;
 }

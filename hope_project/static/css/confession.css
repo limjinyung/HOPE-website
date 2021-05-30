@@ -1,0 +1,34 @@
+.confession-detail-page{
+    margin: 3rem 0rem
+}
+.confession-detail-page h3{
+    font-family: 'Barlow', sans-serif;
+    font-weight: 600;
+    line-weight: 1.3;
+    font-size: var(--font-size-xxl,40px);
+    padding: 0.6rem 0rem;
+    text-align:center;
+
+}
+.confession-detail-date{
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    color: #6D6D6D;
+    margin: 0 0 .3rem;
+    text-align:center;
+}
+.confession-detail-author{
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    color: #81B8B9;
+    margin: 0 0 .3rem;
+    text-align:center;
+}
+.confession-detail-content{
+    margin: 3rem 0rem;
+}
+.confession-detail-content p{
+    font-size: var(--font-size-s);
+    font-family: 'Crimson Pro', serif;
+    font-weight: 400;
+}

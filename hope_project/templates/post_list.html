@@ -11,9 +11,9 @@
 
     <div class="row align-items-center default-button">
         <div class="col search-icon">
-          <a data-bs-toggle="collapse" href="#search_collapse" role="button" aria-expanded="false">
-            <i class="fas fa-search"></i>
-          </a>
+<!--          <a data-bs-toggle="collapse" href="#search_collapse" role="button" aria-expanded="false">-->
+<!--            <i class="fas fa-search"></i>-->
+<!--          </a>-->
         </div>
         <div class="col text-center">
           <h1 class="text-center">hope</h1>
@@ -29,13 +29,13 @@
 
     <!--  Search Bar  -->
 
-    <div class="collapse fulltext-search-input" id="search_collapse">
-      <div class="card card-body">
-        <form action="{% url 'search_results' %}" method="get">
-          <input name="search_hope" type="text" placeholder="Search...">
-        </form>
-      </div>
-    </div>
+<!--    <div class="collapse fulltext-search-input" id="search_collapse">-->
+<!--      <div class="card card-body">-->
+<!--        <form action="{% url 'search_results' %}" method="get">-->
+<!--          <input name="search_hope" type="text" placeholder="Search...">-->
+<!--        </form>-->
+<!--      </div>-->
+<!--    </div>-->
 
     <!--  Navigation Bar  -->
 
@@ -44,10 +44,7 @@
         <a class="nav-link text-uppercase" aria-current="page" href="/">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-uppercase active" aria-current="page" href="/postlist">Confession</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-uppercase" href="#">Quote</a>
+        <a class="nav-link text-uppercase active" aria-current="page" href="/confession">Confession</a>
       </li>
       <li class="nav-item">
         <a class="nav-link text-uppercase" href="/portfolio">Portfolio</a>
@@ -57,142 +54,97 @@
       </li>
     </ul>
 
+    <!--  Alert  -->
+
+    {% if messages %}
+        {% for message in messages %}
+        <div {% if message.tags %} class="alert alert-{{ message.tags }} alert-dismissible fade show"{% endif %} role="alert">
+          {{message}}
+        </div>
+        {% endfor %}
+    {% endif %}
+
     <!--  Intro  -->
 
     <div class="container intro">
         <h2 class="text-center">Confession Page</h2>
-        <p class="text-center">Browse our extensive yoga sequence library and find a home practice that fits into your schedule. We break up our yoga sequences into levels of difficulty so you’re keeping your body safe in every pose. Or search through our list of yoga sequences by anatomy to target different aspects of the body. We also break down our sequences into different types, in case you’re looking for the perfect Kundalini or Ashtanga sequence. In a hurry? Search our yoga sequences by length, so you can fit in your workout during any time crunch.</p>
+        <p class="text-center">A collection of spirit-lifting and positive guidelines for individuals who are feeling lost and anxious during the Covid-19 pandemic or who are just having a bad day. Relevant articles are provided and are specifically catered to ignite positive thinking, motivation and success. The community is encouraged to share personal experiences and ways to overcome daily struggles, if any which may help others to cope with similar challenges in life.</p>
+        <div class="create-link-button text-center">
+            <a href="/create_confession"><button style="float:center;">Create Your Own Confession</button></a>
+        </div>
     </div>
 
     <!--  Daily Reading Post  -->
 
-    <div class="container text-center">
+    <div class="text-center">
         <hr class="divider">
         <h5 class="post-category">Daily Reading Post</h5>
 
         <div class="row confession-page">
+          {% for single_daily_reading_post in daily_reading %}
           <div class="col-sm-4">
-            <a href="#">
+            <a href="/confession/{{ single_daily_reading_post.slug }}">
             <div class="card h-100">
-              <img src="https://images.unsplash.com/photo-1573246123716-6b1782bfc499?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1860&q=80" class="card-img-top" alt="...">
+              <img src="https://hope-web-bucket.oss-ap-southeast-3.aliyuncs.com/{{single_daily_reading_post.post_image}}" class="card-img-top" alt="...">
               <div class="card-body">
-                <h4 class="card-title">How the ‘5-a-Day Mix’ of Fruits, Vegetables Improves Your Health</h4>
-                <p class="card-subtitle">Health</p>
+                <h4 class="card-title">{{ single_daily_reading_post.title }}</h4>
+                <p class="card-subtitle">{{ single_daily_reading_post.tag }}</p>
               </div>
             </div>
             </a>
           </div>
-          <div class="col-sm-4">
-            <a href="#">
-            <div class="card h-100">
-              <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h4 class="card-title">How Diet, Exercise, and Weight Management Can Add a Decade to Your Life</h4>
-                <p class="card-subtitle">Excercise</p>
-              </div>
-            </div>
-            </a>
-          </div>
-          <div class="col-sm-4">
-            <a href="#">
-            <div class="card h-100">
-              <img src="https://images.unsplash.com/photo-1513159446162-54eb8bdaa79b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h4 class="card-title">Why Embracing Your Golden Years Is Good for Your Health and Happiness</h4>
-                <p class="card-subtitle">Health, Happiness</p>
-              </div>
-            </div>
-            </a>
-          </div>
+          {% endfor %}
         </div>
     </div>
 
     <!--  Most View Post  -->
 
-    <div class="container text-center">
+    <div class="text-center">
         <hr class="divider">
         <h5 class="post-category">Most View Post</h5>
 
         <div class="row confession-page">
+          {% for single_most_view in most_view %}
           <div class="col-sm-4">
-            <a href="#">
+            <a href="/confession/{{ single_most_view.slug }}">
             <div class="card h-100">
-              <img src="https://images.unsplash.com/photo-1576701617175-5fa0ce5769dc?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" class="card-img-top" alt="...">
+              <img src="https://hope-web-bucket.oss-ap-southeast-3.aliyuncs.com/{{single_most_view.post_image}}" class="card-img-top" alt="...">
               <div class="card-body">
-                <h4 class="card-title">How the Death Positive Movement Is Coming to Life</h4>
-                <p class="card-subtitle">Positivity</p>
+                <h4 class="card-title">{{ single_most_view.title }}</h4>
+                <p class="card-subtitle">{{ single_most_view.tag }}</p>
               </div>
             </div>
             </a>
           </div>
-          <div class="col-sm-4">
-            <a href="#">
-            <div class="card h-100">
-              <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h4 class="card-title">What Is Dry Oil?</h4>
-                <p class="card-subtitle">Food, Health</p>
-              </div>
-            </div>
-            </a>
-          </div>
-          <div class="col-sm-4">
-            <a href="#">
-            <div class="card h-100">
-              <img src="https://images.unsplash.com/photo-1504279664890-136a82299d1b?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1510&q=80" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h4 class="card-title">5 Ways to Reduce Stress-Related Tension in Your Neck and Shoulders</h4>
-                <p class="card-subtitle">Health</p>
-              </div>
-            </div>
-            </a>
-          </div>
+          {% endfor %}
         </div>
     </div>
 
     <!--  Editor Recommend Post  -->
 
-    <div class="container text-center">
+    <div class="text-center">
         <hr class="divider">
         <h5 class="post-category">Editor Recommend Post</h5>
 
         <div class="row confession-page">
+          {% for single_editor_recommend in editor_recommend %}
           <div class="col-sm-4">
-            <a href="#">
+            <a href="/confession/{{ single_most_view.slug }}">
             <div class="card h-100">
-              <img src="https://images.unsplash.com/photo-1545231160-9f9a3ed14696?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1867&q=80" class="card-img-top" alt="...">
+              <img src="https://hope-web-bucket.oss-ap-southeast-3.aliyuncs.com/{{single_editor_recommend.post_image}}" class="card-img-top" alt="...">
               <div class="card-body">
-                <h4 class="card-title">10 Ways to Poop Like a Rock Star</h4>
-                <p class="card-subtitle">Health</p>
+                <h4 class="card-title">{{ single_editor_recommend.title }}</h4>
+                <p class="card-subtitle">{{ single_editor_recommend.tag }}</p>
               </div>
             </div>
             </a>
           </div>
-          <div class="col-sm-4">
-            <a href="#">
-            <div class="card h-100">
-              <img src="https://images.unsplash.com/photo-1493770348161-369560ae357d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h4 class="card-title">When Healthy Eating Isn’t Healthy: Letting Go of the ‘Perfect’ Diet</h4>
-                <p class="card-subtitle">Food, Health</p>
-              </div>
-            </div>
-            </a>
-          </div>
-          <div class="col-sm-4">
-            <a href="#">
-            <div class="card h-100">
-              <img src="https://images.unsplash.com/photo-1562088287-bde35a1ea917?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h4 class="card-title">Can Yoga Help Lower Cholesterol?</h4>
-                <p class="card-subtitle">Exercise</p>
-              </div>
-            </div>
-            </a>
-          </div>
+          {% endfor %}
         </div>
     </div>
+
 </div>
+
 
 <section class="footer">
   <div class="container">
@@ -200,7 +152,7 @@
       <div class="footer__heading">
         <h2>hope</h2>
       </div>
-      <p class="mb-0">Content & Graphics © 2020 bhairab.iitd@gmail.com LLC</p>
+      <p class="mb-0">hope website © 2021</p>
 
       <br/>
       <ul class="social__media">

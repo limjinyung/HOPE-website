@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form class="login-form container" method="POST">
+  {% csrf_token %}
+  <h2 class="login-form-title text-center">Sign Up</h2>
+  <div class="form-group row">
+<!--    <label class="col-sm-2 col-form-label">Email</label>-->
+    <div class="col-sm-12 p-2">
+        {{sign_up_form.username}}
+    </div>
+  </div>
+  <div class="form-group row">
+<!--    <label class="col-sm-2 col-form-label">Password</label>-->
+    <div class="col-sm-12 p-2">
+        {{sign_up_form.first_name}}
+    </div>
+  </div>
+  <div class="form-group row">
+<!--    <label class="col-sm-2 col-form-label">Password</label>-->
+    <div class="col-sm-12 p-2">
+        {{sign_up_form.last_name}}
+    </div>
+  </div>
+  <div class="form-group row">
+<!--    <label class="col-sm-2 col-form-label">Password</label>-->
+    <div class="col-sm-12 p-2">
+        {{sign_up_form.email}}
+    </div>
+  </div>
+  <div class="form-group row">
+<!--    <label class="col-sm-2 col-form-label">Password</label>-->
+    <div class="col-sm-12 p-2">
+        {{sign_up_form.password}}
+    </div>
+  </div>
+  <div class="form-group row">
+<!--    <label class="col-sm-2 col-form-label">Password</label>-->
+    <div class="col-sm-12 p-2">
+        {{sign_up_form.confirm_password}}
+    </div>
+  </div>
+  <div class="form-group row default-button login-form-submit">
+    <div class="col-sm-12 p-2">
+      <button type="submit" value="Enter" class="btn btn-primary">Sign up</button>
+    </div>
+  </div>
+  <div class="signup-link"><a href="/login">Have an account already? Login now!</a></div>
+</form>
+
+{% endblock %}

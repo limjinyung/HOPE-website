@@ -48,6 +48,7 @@
     font-family: 'Barlow', sans-serif;
 }
 .default-button button {
+    font-family: 'Quicksand', sans-serif;
     float: right;
     color: white;
     background-color: #81B8B9;
@@ -58,7 +59,6 @@
     border-radius: 10px;
     font-weight: 700;
     border: 1px solid #81b9b9;
-    padding-left: 10px;
 }
 .default-button button:hover{
     background-color: #356792;
@@ -247,6 +247,7 @@ section.footer {
     position: relative;
     font-family: 'Poiret One';
     padding:25px 0px;
+    z-index: -100;
 }
 .footer__content{
    padding: 25px;
@@ -328,6 +329,9 @@ ul.bus__list{
 ul.bus__list li{
     list-style-type:none;
     margin-bottom: 5px;
+}
+.carousel .carousel-inner .card-img-top{
+    height:41vw !important;
 }
 
 

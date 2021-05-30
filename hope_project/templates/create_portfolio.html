@@ -1,0 +1,267 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="index container" style="margin-top: 20px;">
+
+        <!--  Header  -->
+
+        <div class="row align-items-center default-button">
+            <div class="col search-icon">
+<!--              <a data-bs-toggle="collapse" href="#search_collapse" role="button" aria-expanded="false">-->
+<!--                <i class="fas fa-search"></i>-->
+<!--              </a>-->
+            </div>
+            <div class="col text-center">
+              <h1 class="text-center">hope</h1>
+            </div>
+            <div class="col">
+              {% if anonymous_user %}
+              <a href="/login"><button>LOGIN</button></a>
+              {% else %}
+              <a href="/logout"><button>LOGOUT</button></a>
+              {% endif %}
+            </div>
+        </div>
+
+        <!--  Search Bar  -->
+
+<!--        <div class="collapse fulltext-search-input" id="search_collapse">-->
+<!--          <div class="card card-body">-->
+<!--            <form action="{% url 'search_results' %}" method="get">-->
+<!--              <input name="search_hope" type="text" placeholder="Search...">-->
+<!--            </form>-->
+<!--          </div>-->
+<!--        </div>-->
+
+        <!--  Navigation Bar  -->
+
+        <ul class="nav justify-content-center">
+          <li class="nav-item">
+            <a class="nav-link text-uppercase" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase" aria-current="page" href="/confession">Confession</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase active" href="/portfolio">Portfolio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase" href="/about_us">About Us</a>
+          </li>
+        </ul>
+
+        <!--  Alert  -->
+
+        {% if messages %}
+            {% for message in messages %}
+            <div {% if message.tags %} class="alert alert-{{ message.tags }} alert-dismissible fade show"{% endif %} role="alert">
+              {{message}}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            {% endfor %}
+        {% endif %}
+
+        <!--  Intro  -->
+
+        <div class="container intro">
+            <h2 class="text-center"> Create Your Portfolio</h2>
+            <p class="text-center">Welcome to submit your portfolio and details which will then be displayed in the Portfolio Section for interested employers and others to view. Kindly fill in the following required fields and proceed with clicking 'Create Portfolio'. Followed by expanding and filling in work/volunteer experiences. Once done, press 'Add Work Experience' to submit the information.</p>
+        </div>
+
+        <hr class="divider">
+
+        {% if user_portfolio == '' %}
+
+            <!--  Create Portfolio Form  -->
+
+            <form class="container" method="POST" style="margin-top:3vh" enctype='multipart/form-data'>
+              {% csrf_token %}
+              <!--     Form title     -->
+              <div class="form-group row">
+                <div class="col-sm-12 p-2">
+                    {{portfolio_form.title}}
+                </div>
+              </div>
+              <!--     Form biography     -->
+              <div class="form-group row">
+                <div class="col-sm-12 p-2">
+                    {{portfolio_form.biography}}
+                </div>
+              </div>
+              <!--     Form phone_number     -->
+              <div class="form-group row">
+                <div class="col-sm-12 p-2">
+                    {{portfolio_form.phone_number}}
+                </div>
+              </div>
+              <!--     Form address     -->
+              <div class="form-group row">
+                <div class="col-sm-12 p-2">
+                    {{portfolio_form.address}}
+                </div>
+              </div>
+              <!--     Form upload image     -->
+              <div class="form-group row create-portfolio-upload-image">
+                  <div class="col-sm-12 p-2">
+                      <input id="portfolio-upload-image" type="file" name="portfolio_image" hidden/>
+                      <label for="portfolio-upload-image">Upload a Profile Image</label>
+                      <!-- name of file chosen -->
+                      <span id="file-chosen">No file chosen</span>
+                  </div>
+              </div>
+              <!--     Form submit button     -->
+              <div class="form-group row default-button login-form-submit">
+                <div class="col-sm-12 p-2">
+                  <button type="submit" value="Enter" class="btn btn-primary">Create Portfolio</button>
+                </div>
+              </div>
+            </form>
+
+        {% else %}
+
+            <div class="single-portfolio-details">
+                <div class="jumbotron jumbotron-fluid">
+                  <div class="container text-center">
+                    <!--   Portfolio Image   -->
+                    <div id="portfolio-image-id" class="portfolio-image">
+                        <img src='https://hope-web-bucket.oss-ap-southeast-3.aliyuncs.com/{{user_portfolio.portfolio_image}}' class="show-portfolio-img" alt="...">
+                    </div>
+                    <!--   Portfolio Name and title   -->
+                    <div class="row">
+                        <div id="portfolio-name-id" class="col portfolio-name">
+                            <h4>{{user_portfolio.author.last_name}} {{user_portfolio.author.first_name}}</h4>
+                        </div>
+                        <div id="portfolio-title-id" class="portfolio-title col">
+                            <p>{{ user_portfolio.title }}</p>
+                        </div>
+                    </div>
+                    <!--   Portfolio phone and email   -->
+                    <div class="portfolio-contact">
+                        <div id="portfolio-phone">
+                            <p><i class="fas fa-phone-alt"></i> &nbsp; {{ user_portfolio.phone_number }}</p>
+                        </div>
+                        <div id="portfolio-email">
+                            <p><i class="far fa-envelope"></i> &nbsp; {{current_user.email}}</p>
+                        </div>
+                    </div>
+                    <!--   Portfolio biography   -->
+                    <div id="portfolio-biography-id" class="portfolio-biography">
+                        <p>{{ user_portfolio.biography }}</p>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+        {% endif %}
+
+        {% if user_portfolio != '' %}
+
+            <!--    Add Work and Volunteer section (accordian)    -->
+
+            <div id="accordion" class="portfolio-accordion">
+              <div class="card">
+                <div class="card-header" id="headingOne">
+                  <h5 class="mb-0">
+                    <button class="btn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      Add Work Experience &nbsp; <i class="fas fa-chevron-down"></i>
+                    </button>
+                  </h5>
+                </div>
+
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                  <div class="card-body">
+                    <form class="container" action="add_work_experience" method="POST" style="margin-top:3vh">
+                      {% csrf_token %}
+                      <!--     Form description     -->
+                      <div class="form-group row">
+                        <div class="col-sm-12 p-2">
+                            {{work_experience_form.description}}
+                        </div>
+                      </div>
+                      <!--     Form start date     -->
+                      <div class="form-group row">
+                        <div class="col-sm-12 p-2">
+                            <label>Start Date:</label>
+                            {{work_experience_form.start_date}}
+                        </div>
+                      </div>
+                      <!--     Form end date     -->
+                      <div class="form-group row">
+                        <div class="col-sm-12 p-2">
+                            <label>End Date:</label>
+                            {{work_experience_form.end_date}}
+                        </div>
+                      </div>
+                      <!--     Form submit button     -->
+                      <div class="form-group row small-portfolio-form-button">
+                        <div class="col-sm-12 p-2">
+                          <button type="submit" value="Enter" class="btn btn-primary">Add Work Experience</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header" id="headingTwo">
+                  <h5 class="mb-0">
+                    <button id="accordian1" class="btn collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      Add Volunteer Experience &nbsp; <i class="fas fa-chevron-down"></i>
+                    </button>
+                  </h5>
+                </div>
+
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                  <div class="card-body">
+                    <form class="container" action="add_volunteer_experience" method="POST" style="margin-top:3vh">
+                      {% csrf_token %}
+                      <!--     Form description     -->
+                      <div class="form-group row">
+                        <div class="col-sm-12 p-2">
+                            {{volunteer_form.description}}
+                        </div>
+                      </div>
+                      <!--     Form start date     -->
+                      <div class="form-group row">
+                        <div class="col-sm-12 p-2">
+                            <label>Start Date:</label>
+                            {{volunteer_form.start_date}}
+                        </div>
+                      </div>
+                      <!--     Form end date     -->
+                      <div class="form-group row">
+                        <div class="col-sm-12 p-2">
+                            <label>End Date:</label>
+                            {{volunteer_form.end_date}}
+                        </div>
+                      </div>
+                      <!--     Form submit button     -->
+                      <div class="form-group row small-portfolio-form-button">
+                        <div class="col-sm-12 p-2">
+                          <button type="submit" value="Enter" class="btn btn-primary">Add Volunteer Experience</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        {% endif %}
+</div>
+
+<script>
+    const actualBtn = document.getElementById('portfolio-upload-image');
+
+    const fileChosen = document.getElementById('file-chosen');
+
+    actualBtn.addEventListener('change', function(){
+      fileChosen.textContent = this.files[0].name
+    })
+
+</script>
+
+{% endblock %}

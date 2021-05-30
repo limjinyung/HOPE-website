@@ -1,51 +1,81 @@
-{% extends 'base.html' %} {% block content %}
-{% load crispy_forms_tags %}
+{% extends "base.html" %}
+{% block content %}
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 card mb-4  mt-3 left  top">
-      <div class="card-body">
-        <h1>{% block title %} {{ post.title }} {% endblock title %}</h1>
-        <p class=" text-muted">{{ post.author }} | {{ post.created_on }}</p>
-        <p class="card-text ">{{ post.content | safe }}</p>
-      </div>
-    </div>
-    {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
+<div class="index container" style="margin-top: 20px;">
 
-    <div class="col-md-8 card mb-4  mt-3 ">
-      <div class="card-body">
-        <!-- comments -->
-        <h2>{{ comments.count }} comments</h2>
+        <!--  Header  -->
 
-        {% for comment in comments %}
-        <div class="comments" style="padding: 10px;">
-          <p class="font-weight-bold">
-            {{ comment.name }}
-            <span class=" text-muted font-weight-normal">
-              {{ comment.created_on }}
-            </span>
-          </p>
-          {{ comment.body | linebreaks }}
+        <div class="row align-items-center default-button">
+            <div class="col search-icon">
+<!--              <a data-bs-toggle="collapse" href="#search_collapse" role="button" aria-expanded="false">-->
+<!--                <i class="fas fa-search"></i>-->
+<!--              </a>-->
+            </div>
+            <div class="col text-center">
+              <h1 class="text-center">hope</h1>
+            </div>
+            <div class="col">
+              {% if anonymous_user %}
+              <a href="/login"><button>LOGIN</button></a>
+              {% else %}
+              <a href="/logout"><button>LOGOUT</button></a>
+              {% endif %}
+            </div>
         </div>
-        {% endfor %}
-      </div>
-    </div>
-    <div class="col-md-8 card mb-4  mt-3 ">
-      <div class="card-body">
-        {% if new_comment %}
-        <div class="alert alert-success" role="alert">
-          Your comment is awaiting moderation
-        </div>
-        {% else %}
-        <h3>Leave a comment</h3>
-        <form method="post" style="margin-top: 1.3em;">
-          {{ comment_form | crispy }}
-          {% csrf_token %}
-          <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
-        </form>
+
+        <!--  Search Bar  -->
+
+<!--        <div class="collapse fulltext-search-input" id="search_collapse">-->
+<!--          <div class="card card-body">-->
+<!--            <form action="{% url 'search_results' %}" method="get">-->
+<!--              <input name="search_hope" type="text" placeholder="Search...">-->
+<!--            </form>-->
+<!--          </div>-->
+<!--        </div>-->
+
+        <!--  Navigation Bar  -->
+
+        <ul class="nav justify-content-center">
+          <li class="nav-item">
+            <a class="nav-link text-uppercase" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase active" aria-current="page" href="/confession">Confession</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase" href="/portfolio">Portfolio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase" href="/about_us">About Us</a>
+          </li>
+        </ul>
+
+        <!--  Alert  -->
+
+        {% if messages %}
+            {% for message in messages %}
+            <div {% if message.tags %} class="alert alert-{{ message.tags }} alert-dismissible fade show"{% endif %} role="alert">
+              {{message}}
+            </div>
+            {% endfor %}
         {% endif %}
-      </div>
-    </div>
-  </div>
+
+        <!--  Intro  -->
+
+        <div class="confession-detail-page">
+<!--            <h2 class="text-center"> Create Your Portfolio</h2>-->
+<!--            <p class="text-center">Browse our extensive yoga sequence library and find a home practice that fits into your schedule. We break up our yoga sequences into levels of difficulty so you’re keeping your body safe in every pose. Or search through our list of yoga sequences by anatomy to target different aspects of the body. We also break down our sequences into different types, in case you’re looking for the perfect Kundalini or Ashtanga sequence. In a hurry? Search our yoga sequences by length, so you can fit in your workout during any time crunch.</p>-->
+            <img src='https://hope-web-bucket.oss-ap-southeast-3.aliyuncs.com/{{confession.post_image}}' class="card-img-top">
+            <h3>{{confession.title}}</h3>
+            <p class="confession-detail-date">{{confession.created_on|date:'M d, Y'}}</p>
+            <p class="confession-detail-author">{{confession.author.username}}</p>
+
+            <hr class="divider">
+
+            <div class="confession-detail-content">{{confession.content|linebreaks}}</div>
+        </div>
+
 </div>
-{% endblock content %}
+
+
+{% endblock %}

@@ -1,0 +1,17 @@
+.create-confession-upload-image label{
+    font-family: 'Quicksand', sans-serif;
+    color: white;
+    background-color: #81B8B9;
+    padding: .5rem 1rem;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 10px;
+    font-weight: 700;
+    border: 1px solid #81b9b9;
+    cursor: pointer;
+}
+#file-chosen{
+  margin-left: 0.3rem;
+  font-family: 'Quicksand', sans-serif;
+}

@@ -1,6 +1,7 @@
 from django.db import models
 from django.db import models
 from django.contrib.auth.models import User
+import datetime
 
 # Create your models here.
 
@@ -17,29 +18,29 @@ class Quote(models.Model):
     content = models.CharField(max_length=80)
 
     def __str__(self):
-        return self.quote_id
+        return self.author.username + ' , ' + str(self.quote_id)
 
 
 class VolunteerExperience(models.Model):
-    # portfolio = models.ForeignKey('Portfolio', on_delete=models.CASCADE, null=True)
+    portfolio = models.ForeignKey('Portfolio', on_delete=models.CASCADE, null=True)
     volunteer_experience_id = models.AutoField(primary_key=True)
     description = models.TextField()
-    start_date = models.DateTimeField()
-    end_date = models.DateTimeField()
+    start_date = models.DateField()
+    end_date = models.DateField()
 
     def __str__(self):
-        return self.volunteer_experience_id
+        return self.portfolio.author.username + " , " + str(self.volunteer_experience_id)
 
 
 class WorkExperience(models.Model):
-    # portfolio = models.ForeignKey('Portfolio', on_delete=models.CASCADE, null=True)
+    portfolio = models.ForeignKey('Portfolio', null=True, on_delete=models.CASCADE)
     work_experience_id = models.AutoField(primary_key=True)
     description = models.TextField()
-    start_date = models.DateTimeField()
-    end_date = models.DateTimeField()
+    start_date = models.DateField()
+    end_date = models.DateField()
 
     def __str__(self):
-        return self.work_experience_id
+        return self.portfolio.author.username + " , " + str(self.work_experience_id)
 
 
 class Portfolio(models.Model):
@@ -47,35 +48,43 @@ class Portfolio(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(null=True, blank=True, max_length=100)
     biography = models.CharField(max_length=500)
-    work_experience = models.ForeignKey('WorkExperience', null=True, blank=True, on_delete=models.CASCADE)
-    volunteer_experience = models.ForeignKey('VolunteerExperience', null=True, blank=True, on_delete=models.CASCADE)
+    # work_experience = models.ForeignKey('WorkExperience', null=True, blank=True, on_delete=models.CASCADE)
+    # volunteer_experience = models.ForeignKey('VolunteerExperience', null=True, blank=True, on_delete=models.CASCADE)
     phone_number = models.CharField(max_length=80)
     address = models.CharField(max_length=80)
     portfolio_image = models.ImageField(null=True, blank=True, upload_to='portfolios')
 
     def __str__(self):
-        return str(self.portfolio_id)
+        return self.author.username + ' , ' + str(self.portfolio_id)
+
+
+class PostTag(models.Model):
+    name = models.CharField(max_length=150)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, default=2)
+    created_on = models.DateTimeField(default=datetime.datetime.now(datetime.timezone.utc))
+
+    def __str__(self):
+        return self.name
 
 
 class Post(models.Model):
     post_id = models.AutoField(primary_key=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author_posts')
     title = models.CharField(max_length=200, unique=True)
-    content = models.TextField(max_length=1500)
+    content = models.TextField()
     slug = models.SlugField(max_length=200, unique=True)
     # image = models.ImageField(upload_to='post')
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
-    status = models.IntegerField(choices=STATUS, default=0)
+    status = models.IntegerField(choices=STATUS, default=1)
     post_image = models.ImageField(null=True, blank=True, upload_to='posts')
+    tag = models.ForeignKey(PostTag, on_delete=models.CASCADE, null=True, blank=True)
 
     class Meta:
         ordering = ['-created_on']
 
     def __str__(self):
-        return self.title + ", " + self.content + ", " + self.slug + ", " + \
-               self.created_on.strftime("%m/%d/%Y, %H:%M:%S") + ", " + \
-               self.updated_on.strftime("%m/%d/%Y, %H:%M:%S") + ", " + str(self.status)
+        return self.title + ", " + self.content + ", " + self.slug + ", " + str(self.status)
 
 
 class PostComment(models.Model):

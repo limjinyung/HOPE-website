@@ -1,6 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
 
+<!--  Alert  -->
+
+{% if messages %}
+    {% for message in messages %}
+    <div {% if message.tags %} class="container alert alert-{{ message.tags }} alert-dismissible fade show"{% endif %} role="alert">
+      {{message}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endfor %}
+{% endif %}
+
 <form class="login-form container" method="POST">
   {% csrf_token %}
   <h2 class="login-form-title text-center">Login</h2>
@@ -21,6 +34,8 @@
       <button type="submit" value="Enter" class="btn btn-primary">Sign in</button>
     </div>
   </div>
+  <div class="signup-link"><a href="/signup">Don't have an account yet? Sign up now!</a></div>
 </form>
+
 
 {% endblock %}

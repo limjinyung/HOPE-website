@@ -6,3 +6,5 @@ Pillow
 whitenoise
 django-aliyun-oss2
 django-cors-headers
+django-widget-tweaks
+django-richtextfield

@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="index container" style="margin-top: 20px;">
+
+        <!--  Header  -->
+
+        <div class="row align-items-center default-button">
+            <div class="col search-icon">
+<!--              <a data-bs-toggle="collapse" href="#search_collapse" role="button" aria-expanded="false">-->
+<!--                <i class="fas fa-search"></i>-->
+<!--              </a>-->
+            </div>
+            <div class="col text-center">
+              <h1 class="text-center">hope</h1>
+            </div>
+            <div class="col">
+              {% if anonymous_user %}
+              <a href="/login"><button>LOGIN</button></a>
+              {% else %}
+              <a href="/logout"><button>LOGOUT</button></a>
+              {% endif %}
+            </div>
+        </div>
+
+        <!--  Search Bar  -->
+
+<!--        <div class="collapse fulltext-search-input" id="search_collapse">-->
+<!--          <div class="card card-body">-->
+<!--            <form action="{% url 'search_results' %}" method="get">-->
+<!--              <input name="search_hope" type="text" placeholder="Search...">-->
+<!--            </form>-->
+<!--          </div>-->
+<!--        </div>-->
+
+        <!--  Navigation Bar  -->
+
+        <ul class="nav justify-content-center">
+          <li class="nav-item">
+            <a class="nav-link text-uppercase" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase active" aria-current="page" href="/confession">Confession</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase" href="/portfolio">Portfolio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase" href="/about_us">About Us</a>
+          </li>
+        </ul>
+
+        <!--  Intro  -->
+
+        <div class="container intro">
+            <h2 class="text-center"> Create Your Confession Post</h2>
+            <p class="text-center">Thank you for contributing and spreading positivity among the community. This portal allows users to insert personal experience and constructive feedbacks. It will then be publicly displayed in the Confession Section. Before submitting by clicking 'Post Now!' button, kindly choose the corresponding classification of the post. Feel free to read and review others' post as well. Have a nice day!</p>
+        </div>
+
+        <hr class="divider">
+
+        <!--  Create Confession Form  -->
+
+        <form class="container" method="POST" style="margin-top:3vh" enctype='multipart/form-data'>
+          {% csrf_token %}
+          <!--     Form title     -->
+          <div class="form-group row">
+            <div class="col-sm-12 p-2">
+                {{form.title}}
+            </div>
+          </div>
+          <!--     Form content     -->
+          <div class="form-group row">
+            <div class="col-sm-12 p-2">
+                {{form.content}}
+            </div>
+          </div>
+          <!--     Form upload image     -->
+          <div class="form-group row create-confession-upload-image">
+              <div class="col-sm-12 p-2">
+                  <input id="confession-upload-image" type="file" name="post_image" hidden/>
+                  <label for="confession-upload-image">Upload an Image</label>
+                  <!-- name of file chosen -->
+                  <span id="file-chosen">No file chosen</span>
+              </div>
+          </div>
+          <!--     Form tag     -->
+          <div class="form-group row">
+            <div class="col-sm-12 p-2">
+                {% load widget_tweaks %}
+                {% render_field form.tag class="form-select" name="tag" placeholder="Please select a tag" %}
+            </div>
+          </div>
+          <!--     Form submit button     -->
+          <div class="form-group row default-button login-form-submit">
+            <div class="col-sm-12 p-2">
+              <button type="submit" value="Enter" class="btn btn-primary">Post Now !</button>
+            </div>
+          </div>
+        </form>
+
+</div>
+
+<script>
+    const actualBtn = document.getElementById('confession-upload-image');
+
+    const fileChosen = document.getElementById('file-chosen');
+
+    actualBtn.addEventListener('change', function(){
+      fileChosen.textContent = this.files[0].name
+    })
+</script>
+
+{% endblock %}

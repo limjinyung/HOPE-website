@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, PostComment, Portfolio, WorkExperience, VolunteerExperience
+from .models import Post, PostTag, PostComment, Portfolio, WorkExperience, VolunteerExperience
 
 
 # class PostAdmin(admin.ModelAdmin):
@@ -22,4 +22,4 @@ from .models import Post, PostComment, Portfolio, WorkExperience, VolunteerExper
 #         queryset.update(active=True)
 
 
-admin.site.register([Post, PostComment, Portfolio, WorkExperience, VolunteerExperience])
+admin.site.register([Post, PostTag, PostComment, Portfolio, WorkExperience, VolunteerExperience])

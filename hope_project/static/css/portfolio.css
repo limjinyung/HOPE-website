@@ -18,11 +18,27 @@
     overflow:scroll;
     -webkit-overflow-scrolling: touch;
 }
+.portfolio-details-before .jumbotron{
+    height: 90vh;
+    margin-bottom: 5vh;
+    background-color: #F7F5EF;
+}
+.portfolio-details-before p{
+    font-family: 'Poppins', sans-serif;
+    font-size:36px;
+    color:#81B8B9;
+    margin:auto;
+}
+.portfolio-details-before p i{
+    font-size:96px;
+    color:#81B8B9;
+    margin:auto;
+}
 .portfolio-details .jumbotron{
     height: 90vh;
     margin-bottom: 5vh;
     background-color: #F7F5EF;
-    overflow:auto;
+    overflow:auto !important;
 }
 .portfolio-section h5{
     font-family: 'Crimson Pro', serif;
@@ -33,6 +49,9 @@
     text-align:left;
     font-family: 'Crimson Pro', serif;
     padding-top: .5rem;
+}
+.card-img-top{
+    height: 31vw !important;
 }
 .portfolio-name h4{
     font-size: 27px;
@@ -49,4 +68,3 @@
 .portfolio-volunteer h5{
     font-size:21px;
 }
-
