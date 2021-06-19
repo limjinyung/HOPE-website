@@ -15,3 +15,6 @@ features of the website:
 
 website URL: www.hop3.cyou
 
+Designer and Developer of the website
+
+![alt text](https://github.com/limjinyung/hope-website/blob/master/hope_project/static/images/about-us-img.png?raw=true)
