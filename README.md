@@ -1,4 +1,5 @@
-This hope-webite is built for Alibaba Cloud Developer Initiative 2021
+This hope-webite is built for Alibaba Cloud Developer Initiative 2021 and awarded 2nd place 
+(https://www.alibabacloud.com/blog/congratulations-to-the-winners-of-alibaba-cloud-developer-initiative-2021_597505?spm=a2c65.11461447.0.0.2b2243d2CSl8Tl)
 
 Tech Stack used in this project including:
 1. Web Framework: Django (Python) + Javascript
